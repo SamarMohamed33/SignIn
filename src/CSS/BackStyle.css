@@ -1,0 +1,41 @@
+.back-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  border-radius: 15px;
+}
+.signup,
+.welcome-back {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.welcome-back {
+  background-color: #735be6;
+  color: white;
+  border-radius: 15px 0px 0 15px;
+}
+.signup {
+  background-color: #e8ebec;
+  color: black;
+  border-radius: 0 15px 15px 0;
+}
+.welcome-back h1 {
+  font-size: 70px;
+  margin-bottom: 0;
+  text-align: center;
+}
+.welcome-back p {
+  font-size: 22px;
+  width: 60%;
+  text-align: center;
+}
+.signup-links * {
+  margin: auto 5px;
+  font-size: 25px;
+}
+.signup .submit-btn {
+  background-color: #735be6;
+}

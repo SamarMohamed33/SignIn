@@ -1,38 +1,68 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100vh;
+  background-image: linear-gradient(135deg, #8bc6ec 0%, #9599e2 100%);
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+.react-card-flip {
+  margin: auto;
+  height: 90%;
+  width: 80%;
+}
+/* .create-account,
+.signin {
+  height: 100%;
+} */
+signup {
+  height: 100%;
+}
+.create-account {
+  background-image: url(./Images/Book.webp);
+  background-size: cover;
+  background-position: center center;
   color: white;
+  font-size: 20px;
+  border-radius: 0 15px 15px 0;
 }
-
-.App-link {
-  color: #61dafb;
+.create-account button,
+.welcome-back button {
+  height: 45px;
+  width: 250px;
+  border: none;
+  border-radius: 15px;
+  background-color: #e8ebec;
+  cursor: pointer;
+  font-size: 25px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.create-account button,
+.create-account h1 {
+  margin: 70px 0 0 40px;
+}
+.flip {
+  display: none;
+}
+@media screen and (max-width: 1200px) {
+  .signin,
+  .signup {
+    flex: 100% !important;
+    border-radius: 15px !important;
   }
-  to {
-    transform: rotate(360deg);
+  .welcome-back,
+  .create-account {
+    display: none !important;
+  }
+  .flip {
+    display: block;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+    margin: 15px auto 0;
+    color: #144f79;
+  }
+  .flip:hover {
+    text-decoration: underline;
   }
 }
