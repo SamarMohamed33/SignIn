@@ -39,6 +39,11 @@
 .signup .submit-btn {
   background-color: #735be6;
 }
+.signup .submit-btn:hover {
+  color: #735be6;
+  background-color: #e8ebec;
+  border: 2px solid #735be6;
+}
 #valid {
   color: rgb(238, 238, 238);
   background-color: rgb(255, 51, 51);
