@@ -10,6 +10,9 @@
 .create-account {
   flex: 50%;
 }
+.form-container {
+  max-width: 90%;
+}
 .form-container,
 .signin {
   display: flex;
@@ -34,8 +37,7 @@ form div {
   height: 30px;
   width: 100%;
   border: none;
-  padding: 5px;
-  text-indent: 35px;
+  padding: 5px 5px 5px 35px;
   font-size: 17px;
 }
 form input:focus {
@@ -46,9 +48,9 @@ form {
   text-align: center;
 }
 .submit-btn {
-  height: 50px;
-  width: 50%;
-  border-radius: 15px;
+  height: 40px;
+  width: 90%;
+  border-radius: 10px;
   border: none;
   background-color: #144f79;
   color: white;
@@ -61,7 +63,7 @@ form {
   background-color: #4c7694;
 }
 hr {
-  width: 300px;
+  width: 80%;
   margin-top: 50px;
 }
 .links,
@@ -74,7 +76,7 @@ hr {
 }
 .icons {
   position: relative;
-  top: 27px;
+  top: 26px;
   left: 7px;
   color: rgb(110, 110, 110);
   float: left;

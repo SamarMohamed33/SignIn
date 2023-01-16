@@ -12,10 +12,6 @@
   height: 90%;
   width: 80%;
 }
-/* .create-account,
-.signin {
-  height: 100%;
-} */
 signup {
   height: 100%;
 }
@@ -64,5 +60,18 @@ signup {
   }
   .flip:hover {
     text-decoration: underline;
+  }
+}
+@media screen and (max-width: 600px) {
+  .react-card-flip {
+    height: 100%;
+    width: 100%;
+  }
+  .front-container,
+  .back-container {
+    border-radius: 0 !important;
+  }
+  form {
+    width: 100%;
   }
 }

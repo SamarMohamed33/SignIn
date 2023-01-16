@@ -48,12 +48,10 @@ function SignInForm(props) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <span id="valid" style={{ color: "red" }}>
-            {error}
-          </span>
+          <span style={{ color: "red" }}>{error}</span>
           <div className="remember">
             <input type="checkbox" id="remember" />
-            <label>Remember me</label>
+            <label htmlFor="remember">Remember me</label>
           </div>
           <input type="submit" value="LOG IN" className="submit-btn" />
         </form>
