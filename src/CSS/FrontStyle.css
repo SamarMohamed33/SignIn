@@ -15,42 +15,24 @@
 }
 .form-container,
 .signin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 90%;
+  margin: auto;
   font-size: 20px;
 }
-form div {
-  text-align: start;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: 10px 0;
-  box-sizing: border-box;
-}
-.form-label {
-  display: block;
-  margin-bottom: -15px;
-}
-.form-input {
-  box-sizing: border-box;
-  height: 40px;
-  width: 100%;
-  border: 1px solid #b6b6b6;
-  padding: 5px 5px 5px 35px;
-  font-size: 17px;
-}
-form input:focus {
-  outline: none;
-  border: none;
-}
 form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   text-align: center;
+}
+.inputs {
+  width: 60%;
+  margin: 10px !important;
 }
 .submit-btn {
   height: 40px;
-  width: 90%;
-  /* border-radius: 10px; */
   border: none;
   background-color: #144f79;
   color: white;
@@ -59,15 +41,9 @@ form {
   transition: 0.5s ease;
 }
 .submit-btn:hover {
-  /* transform: scale(1.1);
-  background-color: #4c7694; */
   background-color: #e8ebec;
   border: 2px solid #4c7694;
   color: #144f79;
-}
-hr {
-  width: 80%;
-  margin-top: 50px;
 }
 .links,
 .signin h1 {
@@ -77,10 +53,9 @@ hr {
   font-size: 25px;
   margin: auto 5px;
 }
-.icons {
-  position: relative;
-  top: 29px;
-  left: 7px;
-  color: rgb(110, 110, 110);
-  float: left;
+@media screen and (max-width: 1200px) {
+  .inputs {
+    width: 90%;
+    margin: 10px !important;
+  }
 }

@@ -1,48 +1,39 @@
 import "../CSS/BackStyle.css";
+import "../CSS/FrontStyle.css";
 import { useState } from "react";
+import { BsFacebook, BsTwitter, BsLinkedin, BsTelegram } from "react-icons/bs";
+
 import {
-  BsFacebook,
-  BsTwitter,
-  BsLinkedin,
-  BsTelegram,
-  BsLockFill,
-} from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
-import { GrMail } from "react-icons/gr";
+  FilledInput,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function SignUpForm(props) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
-  const [usernameError, setUsernameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [passwordErrorA, setPasswordErrorA] = useState("");
+  const [error, setError] = useState(false);
   const emailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
   const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (name === "" || name.length < 2) {
-      setUsernameError("Username is Required");
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      passwordAgain === ""
+    ) {
+      event.preventDefault();
+      setError(true);
     } else {
-      setUsernameError("");
-    }
-    if (!email.match(emailformat)) {
-      setEmailError("Enter a valid Email");
-    } else {
-      setEmailError("");
-    }
-    if (password === "") {
-      setPasswordError("Password is required");
-    } else {
-      setPasswordError("");
-    }
-    if (passwordAgain === "") {
-      setPasswordErrorA("Please confirm your password");
-    } else if (password !== passwordAgain) {
-      setPasswordErrorA("Password doesn't match");
-    } else {
-      setPasswordErrorA("");
+      setError(!error);
     }
   };
   function signin() {
@@ -59,62 +50,84 @@ function SignUpForm(props) {
       </div>
       <div className="form-container">
         <form>
-          <div>
-            <label className="form-label">Username</label>
-            <FaUserAlt className="icons" />
-            <input
-              type="text"
-              className="form-input"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-            <div id="valid">{usernameError}</div>
-          </div>
-          <div>
-            <label className="form-label">Email</label>
-            <GrMail className="icons" />
-            <input
-              type="text"
-              className="form-input"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            <div id="valid">{emailError}</div>
-          </div>
-          <div>
-            <label className="form-label">Password</label>
-            <BsLockFill className="icons" />
-            <input
-              type="password"
-              className="form-input"
+          <TextField
+            error={(name === "" || name.length < 3) & error}
+            className="inputs"
+            label="Username"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+            variant="filled"
+          />
+          <TextField
+            error={(email === "" || !email.match(emailformat)) & error}
+            className="inputs"
+            label="Email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            variant="filled"
+          />
+          <FormControl
+            variant="filled"
+            className="inputs"
+            error={(password === "") & error}
+          >
+            <InputLabel htmlFor="filled-adornment-password">
+              Password
+            </InputLabel>
+            <FilledInput
+              id="filled-adornment-password"
+              type={showPassword ? "text" : "password"}
               value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
+              onChange={(e) => setPassword(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
-            <div id="valid">{passwordError}</div>
-          </div>
-          <div>
-            <label className="form-label">Password again</label>
-            <BsLockFill className="icons" />
-            <input
-              type="password"
-              className="form-input"
+          </FormControl>
+          <FormControl
+            variant="filled"
+            className="inputs"
+            error={(passwordAgain === "" || passwordAgain !== password) & error}
+          >
+            <InputLabel htmlFor="filled-adornment-password">
+              Password again
+            </InputLabel>
+            <FilledInput
+              id="filled-adornment-password"
+              type={showPassword ? "text" : "password"}
               value={passwordAgain}
               onChange={(e) => {
                 setPasswordAgain(e.target.value);
               }}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
-            <div id="valid">{passwordErrorA}</div>
-          </div>
+          </FormControl>
           <input
             type="submit"
             value="Sign Up"
-            className="submit-btn"
+            className="submit-btn inputs"
             onClick={handleSubmit}
           />
           <button onClick={signin} className="flip">

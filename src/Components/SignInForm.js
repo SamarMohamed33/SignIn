@@ -1,23 +1,32 @@
 import "../CSS/FrontStyle.css";
 import { useState } from "react";
+import { BsFacebook, BsTwitter, BsLinkedin, BsTelegram } from "react-icons/bs";
 import {
-  BsFacebook,
-  BsTwitter,
-  BsLinkedin,
-  BsTelegram,
-  BsLockFill,
-} from "react-icons/bs";
-import { FaUserAlt } from "react-icons/fa";
+  Checkbox,
+  FilledInput,
+  FormControl,
+  FormControlLabel,
+  IconButton,
+  InputAdornment,
+  InputLabel,
+  TextField,
+} from "@mui/material";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function SignInForm(props) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(false);
   const handleSubmit = (event) => {
-    event.preventDefault();
     if (password === "" || name === "") {
-      setError("Username or Password is Wrong");
+      event.preventDefault();
+      setError(!error);
     } else {
-      setError("");
+      setError(!error);
     }
   };
   function createAccount() {
@@ -28,34 +37,49 @@ function SignInForm(props) {
       <h1>Sign In</h1>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <div>
-            <label className="form-label">Username</label>
-            <FaUserAlt className="icons" />
-            <input
-              type="text"
-              className="form-input"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label className="form-label">Password</label>
-            <BsLockFill className="icons" />
-            <input
-              type="password"
-              className="form-input"
+          <TextField
+            className="inputs"
+            label="Username"
+            error={(name === "") & error}
+            style={{ marginBottom: "20px" }}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            variant="filled"
+          />
+          <FormControl
+            variant="filled"
+            className="inputs"
+            error={(password === "") & error}
+          >
+            <InputLabel htmlFor="filled-adornment-password">
+              Password
+            </InputLabel>
+            <FilledInput
+              type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
-          </div>
-          <span style={{ color: "red" }}>{error}</span>
-          <div className="remember">
-            <input type="checkbox" id="remember" />
-            <label htmlFor="remember">Remember me</label>
-          </div>
-          <input type="submit" value="LOG IN" className="submit-btn" />
+          </FormControl>
+          <FormControlLabel
+            className="inputs"
+            control={<Checkbox />}
+            label="Remember me"
+            labelPlacement="end"
+          />
+          <input type="submit" value="LOG IN" className="submit-btn inputs" />
         </form>
-        <hr />
+        <hr style={{ width: "80%", marginTop: "50px" }} />
         <div className="links">
           <h4>Log in using your account on:</h4>
           <div>
