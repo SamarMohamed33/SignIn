@@ -28,7 +28,9 @@ function SignUpForm(props) {
       name === "" ||
       email === "" ||
       password === "" ||
-      passwordAgain === ""
+      passwordAgain === "" ||
+      password !== passwordAgain ||
+      !email.match(emailformat)
     ) {
       event.preventDefault();
       setError(true);
