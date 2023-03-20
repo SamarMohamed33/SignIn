@@ -26,6 +26,7 @@ function SignUpForm(props) {
   const handleSubmit = (event) => {
     if (
       name === "" ||
+      name.length < 3 ||
       email === "" ||
       password === "" ||
       passwordAgain === "" ||

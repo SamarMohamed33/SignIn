@@ -24,7 +24,7 @@ function SignInForm(props) {
   const handleSubmit = (event) => {
     if (password === "" || name === "") {
       event.preventDefault();
-      setError(!error);
+      setError(true);
     } else {
       setError(!error);
     }
